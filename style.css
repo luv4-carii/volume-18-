@@ -1,0 +1,1153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #05070b;
+  color: #f4f7fb;
+  font-family: 'DM Sans', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.page {
+  display: none;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page.active {
+  display: flex;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+#intro {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 25px;
+  background: #070a10;
+}
+
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image: url("https://raw.githubusercontent.com/luv4-carii/volume-18-/refs/heads/main/darker%20collage.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #070a10;
+
+  /* Keep the collage completely still */
+  transform: none;
+  animation: none;
+  transition: none;
+
+  /* Keep rendering stable */
+  will-change: auto;
+  backface-visibility: hidden;
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(5, 10, 20, .18),
+      rgba(5, 7, 11, .76) 75%
+    );
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  width: min(700px, 100%);
+}
+
+.eyebrow,
+.intro-eyebrow {
+  margin: 0 0 20px;
+  color: rgba(111, 168, 255, .85);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.intro-content h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 70px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.blue-line,
+.intro-line {
+  width: 70px;
+  height: 1px;
+  margin: 30px auto;
+  background: #6fa8ff;
+  box-shadow:
+    0 0 8px rgba(111, 168, 255, .8),
+    0 0 20px rgba(79, 148, 255, .45);
+}
+
+.intro-content p:not(.eyebrow):not(.intro-eyebrow) {
+  max-width: 620px;
+  margin: 0 auto 20px;
+  color: rgba(244, 247, 251, .72);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.intro-content p span,
+.highlight {
+  color: #6fa8ff;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  margin-top: 18px;
+  padding: 13px 24px;
+  border: 1px solid rgba(111, 168, 255, .5);
+  background: rgba(10, 15, 25, .75);
+  color: #f4f7fb;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+button:hover {
+  background: rgba(38, 69, 115, .3);
+  border-color: #6fa8ff;
+  box-shadow:
+    0 0 12px rgba(111, 168, 255, .35),
+    0 0 25px rgba(79, 148, 255, .15);
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   COVER
+========================= */
+
+#cover {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(30, 70, 130, .16),
+      transparent 38%
+    ),
+    #05070b;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 3;
+  width: min(600px, 100%);
+  padding: 50px 25px;
+}
+
+.cover-small {
+  margin: 0 0 22px;
+  color: rgba(111, 168, 255, .75);
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.album-cover {
+  display: block;
+  width: min(390px, 82vw);
+  margin: 0 auto 30px;
+  border: none;
+  box-shadow:
+    0 0 30px rgba(65, 130, 255, .18),
+    0 0 70px rgba(40, 90, 180, .08);
+}
+
+.cover-content h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 8vw, 72px);
+  font-weight: 400;
+  letter-spacing: 8px;
+}
+
+.cover-content h2 {
+  margin: -5px 0 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 7vw, 60px);
+  font-weight: 400;
+  letter-spacing: 7px;
+  color: #6fa8ff;
+  text-shadow:
+    0 0 10px rgba(111, 168, 255, .5),
+    0 0 25px rgba(79, 148, 255, .25);
+}
+
+.cover-name {
+  margin: 0;
+  color: rgba(255,255,255,.6);
+  font-size: 11px;
+  letter-spacing: 7px;
+}
+
+
+/* COVER GLOW GRAPHICS */
+
+.cover-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.cover-glow-one {
+  width: 260px;
+  height: 260px;
+  top: 12%;
+  left: -90px;
+  background: radial-gradient(
+    circle,
+    rgba(69, 139, 255, .18),
+    transparent 70%
+  );
+}
+
+.cover-glow-two {
+  width: 330px;
+  height: 330px;
+  right: -120px;
+  bottom: 4%;
+  background: radial-gradient(
+    circle,
+    rgba(42, 105, 210, .14),
+    transparent 70%
+  );
+}
+
+.cover-glow-three {
+  width: 170px;
+  height: 170px;
+  right: 20%;
+  top: 8%;
+  background: radial-gradient(
+    circle,
+    rgba(111, 168, 255, .09),
+    transparent 70%
+  );
+}
+
+
+/* =========================
+   TRACKLIST
+========================= */
+
+#tracklist {
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(30, 70, 130, .12),
+      transparent 45%
+    ),
+    #05070b;
+}
+
+.tracklist-content {
+  position: relative;
+  z-index: 3;
+  width: min(700px, 90%);
+  padding: 60px 0;
+}
+
+.tracklist-content h1 {
+  margin: 0 0 35px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 60px);
+  font-weight: 400;
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 55px 1fr 30px;
+  align-items: center;
+  min-height: 70px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  cursor: pointer;
+  transition:
+    padding .25s ease,
+    background .25s ease;
+}
+
+.track-row:last-child {
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.track-row:hover {
+  padding-left: 12px;
+  background: rgba(58, 108, 180, .08);
+}
+
+.track-number {
+  color: rgba(111,168,255,.65);
+  font-size: 12px;
+}
+
+.track-title {
+  color: rgba(255,255,255,.9);
+  font-size: 15px;
+}
+
+.track-arrow {
+  color: #6fa8ff;
+}
+
+.tracklist-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.tracklist-glow-one {
+  width: 330px;
+  height: 330px;
+  top: 3%;
+  left: -150px;
+  background: radial-gradient(
+    circle,
+    rgba(66, 130, 255, .13),
+    transparent 70%
+  );
+}
+
+.tracklist-glow-two {
+  width: 280px;
+  height: 280px;
+  right: -120px;
+  bottom: 5%;
+  background: radial-gradient(
+    circle,
+    rgba(52, 110, 210, .12),
+    transparent 70%
+  );
+}
+
+
+/* =========================
+   TRACK PAGES
+========================= */
+
+.track-page {
+  position: relative;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 80px 25px 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #05070b;
+}
+
+.track-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      rgba(5,7,11,.90),
+      rgba(5,7,11,.97)
+    ),
+    url("https://raw.githubusercontent.com/luv4-carii/volume-18-/refs/heads/main/album%20cover.png");
+  background-position: center;
+  background-size: cover;
+  filter: blur(1px);
+  transform: scale(1.03);
+}
+
+.track-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: min(650px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================
+   KAYDEN LETTERS
+========================= */
+
+.name-letter,
+.name-word {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+
+  color: rgba(111,168,255,.98);
+
+  text-shadow:
+    0 0 5px rgba(111,168,255,1),
+    0 0 12px rgba(78,148,255,.95),
+    0 0 25px rgba(78,148,255,.85),
+    0 0 45px rgba(78,148,255,.65),
+    0 0 75px rgba(78,148,255,.38);
+
+  opacity: 1;
+}
+
+
+/*
+   LETTERS NOW LIVE INSIDE .track-content.
+
+   Because they are part of the scrolling
+   track content, they move naturally with
+   the page instead of staying stuck to
+   the browser corner.
+*/
+
+.name-letter {
+  top: 25px;
+  right: 4%;
+  font-size: 110px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.name-word {
+  top: 25px;
+  right: 4%;
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 9px;
+}
+
+
+/* TRACK GLOW GRAPHICS */
+
+.track-glow {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.track-glow-one {
+  width: 310px;
+  height: 310px;
+  top: 4%;
+  left: -150px;
+  background: radial-gradient(
+    circle,
+    rgba(62, 130, 255, .13),
+    transparent 70%
+  );
+}
+
+.track-glow-two {
+  width: 260px;
+  height: 260px;
+  right: -120px;
+  bottom: 8%;
+  background: radial-gradient(
+    circle,
+    rgba(49, 107, 215, .11),
+    transparent 70%
+  );
+}
+
+
+/* TRACK ORDER */
+
+.track-number-large {
+  order: 1;
+  margin: 0 0 10px;
+  color: rgba(111,168,255,.7);
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.track-content h1 {
+  order: 2;
+  margin: 0 0 22px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 8vw, 64px);
+  font-weight: 400;
+}
+
+
+/* CLICK ME */
+
+.click-me {
+  order: 3;
+  margin: 0 0 8px;
+  color: #6fa8ff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow:
+    0 0 6px rgba(111,168,255,.7),
+    0 0 14px rgba(79,148,255,.35);
+}
+
+
+/* MUSIC */
+
+.music-section {
+  order: 4;
+  position: relative;
+  width: min(560px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.music-section iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 1px solid rgba(255,255,255,.08);
+  background: #000;
+}
+
+.music-note {
+  margin: 9px 0 0;
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+
+/* CLICK OVERLAY */
+
+.youtube-click-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+/* AFTER CLICK */
+
+.scroll-after-click {
+  order: 5;
+  margin: 12px 0 28px;
+  color: #6fa8ff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.scroll-after-click.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* PHOTO */
+
+.track-photo {
+  order: 6;
+  display: block;
+  width: min(540px, 100%);
+  height: auto;
+  margin: 0 auto 30px;
+  border: none;
+  box-shadow: none;
+}
+
+.track-photo-small {
+  width: min(390px, 82%);
+}
+
+
+/* SOUNDTRACK */
+
+.lyric-section {
+  order: 7;
+  width: min(600px, 100%);
+  margin: 0 auto 30px;
+  padding: 0;
+}
+
+.lyric-label {
+  margin: 0 0 12px;
+  color: #6fa8ff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.lyric {
+  margin: 0;
+  color: rgba(255,255,255,.62);
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  font-style: italic;
+  text-align: center;
+}
+
+.lyric::before {
+  content: "“";
+}
+
+.lyric::after {
+  content: "”";
+}
+
+
+/* MESSAGE */
+
+.message-section {
+  order: 8;
+  width: min(600px, 100%);
+  margin: 0 auto 35px;
+}
+
+.message-section p {
+  margin: 0;
+  color: rgba(255,255,255,.76);
+  font-size: 15px;
+  line-height: 1.85;
+  text-align: left;
+}
+
+
+/* NEXT TRACK */
+
+.track-content > .next-button {
+  order: 9;
+  align-self: center;
+}
+
+
+/* TRACK 7 */
+
+#track7 .track-content {
+  align-items: center;
+  text-align: center;
+}
+
+#track7 .track-number-large {
+  order: 1;
+}
+
+#track7 h1 {
+  order: 2;
+}
+
+#track7 .scroll-text {
+  order: 3;
+  margin: 10px 0 25px;
+  color: rgba(255,255,255,.55);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* Keep Track 7's button at the very bottom */
+#track7 .next-button {
+  order: 9;
+}
+
+
+/* =====================================================
+   FLOATING PARTICLES
+===================================================== */
+
+.album-particle,
+.track-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(111, 168, 255, .8);
+  box-shadow:
+    0 0 5px rgba(111, 168, 255, .8),
+    0 0 12px rgba(79, 148, 255, .45);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: floatingParticle linear infinite;
+}
+
+@keyframes floatingParticle {
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 25px, 0) scale(.7);
+  }
+
+  15% {
+    opacity: .55;
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  85% {
+    opacity: .35;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(45px, -80px, 0) scale(1);
+  }
+}
+
+.album-particle:nth-child(3n),
+.track-particle:nth-child(3n) {
+  width: 2px;
+  height: 2px;
+  animation-duration: 12s;
+}
+
+.album-particle:nth-child(4n),
+.track-particle:nth-child(4n) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 18s;
+}
+
+
+/* =====================================================
+   MOVING LIGHT LEAKS
+===================================================== */
+
+#cover::before,
+.track-page::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle,
+    rgba(75, 140, 255, .11),
+    rgba(75, 140, 255, .04) 35%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  animation: lightLeakMove 20s ease-in-out infinite alternate;
+}
+
+#cover::before {
+  top: 5%;
+  left: -100px;
+}
+
+.track-page::before {
+  bottom: 5%;
+  right: -120px;
+  animation-duration: 24s;
+}
+
+@keyframes lightLeakMove {
+
+  0% {
+    transform: translate3d(0, 0, 0) scale(.9);
+    opacity: .45;
+  }
+
+  50% {
+    transform: translate3d(100px, 70px, 0) scale(1.15);
+    opacity: .75;
+  }
+
+  100% {
+    transform: translate3d(40px, 140px, 0) scale(.95);
+    opacity: .4;
+  }
+}
+
+
+/* =====================================================
+   COVER ORBIT
+===================================================== */
+
+#cover::after {
+  content: "";
+  position: absolute;
+  width: min(470px, 90vw);
+  height: min(470px, 90vw);
+  border: 1px solid rgba(111, 168, 255, .08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: orbitRotate 35s linear infinite;
+  box-shadow:
+    0 0 30px rgba(79, 148, 255, .025),
+    inset 0 0 30px rgba(79, 148, 255, .025);
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   TRACK AUDIO WAVE
+===================================================== */
+
+.track-page::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 100%;
+  height: 90px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: .11;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(111,168,255,.7) 9px,
+      transparent 10px,
+      transparent 16px
+    );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 18%,
+    black 82%,
+    transparent
+  );
+  animation: waveformPulse 6s ease-in-out infinite;
+}
+
+@keyframes waveformPulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scaleY(.45);
+    opacity: .06;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scaleY(1);
+    opacity: .13;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .track-page {
+    padding: 65px 18px 80px;
+  }
+
+  .name-letter {
+    top: 20px;
+    right: 5%;
+    font-size: 78px;
+  }
+
+  .name-word {
+    top: 20px;
+    right: 5%;
+    font-size: 42px;
+    letter-spacing: 6px;
+  }
+
+  .track-row {
+    grid-template-columns: 45px 1fr 25px;
+  }
+
+  .message-section p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .lyric {
+    font-size: 16px;
+  }
+
+  .track-photo-small {
+    width: 88%;
+  }
+
+  #cover::after {
+    width: 390px;
+    height: 390px;
+  }
+
+  .track-page::after {
+    height: 70px;
+  }
+
+  /* Keep intro collage stable on phones */
+  .intro-bg {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+
+    will-change: auto;
+  }
+}
+
+
+/* =====================================================
+   DEVICE RESPONSIVENESS
+   Tablet • Laptop • Desktop
+===================================================== */
+
+/* TABLETS + SMALL LAPTOPS */
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+  .intro-content {
+    width: min(650px, 90%);
+  }
+
+  .cover-content {
+    width: min(560px, 90%);
+  }
+
+  .album-cover {
+    width: min(360px, 70vw);
+  }
+
+  .tracklist-content {
+    width: min(650px, 88%);
+  }
+
+  .track-content {
+    width: min(620px, 88%);
+  }
+
+  .music-section {
+    width: min(540px, 100%);
+  }
+
+  .track-photo {
+    width: min(520px, 100%);
+  }
+
+  .message-section,
+  .lyric-section {
+    width: min(580px, 100%);
+  }
+}
+
+
+/* LARGE LAPTOPS + DESKTOPS */
+
+@media (min-width: 1101px) {
+
+  .intro-content {
+    width: min(700px, 75%);
+  }
+
+  .cover-content {
+    width: min(620px, 70%);
+  }
+
+  .tracklist-content {
+    width: min(720px, 70%);
+  }
+
+  .track-content {
+    width: min(680px, 70%);
+  }
+
+  .music-section {
+    width: min(560px, 100%);
+  }
+
+  .track-photo {
+    width: min(540px, 100%);
+  }
+}
+
+
+/* VERY SMALL PHONES */
+
+@media (max-width: 380px) {
+
+  #intro {
+    padding: 55px 18px;
+  }
+
+  .intro-content h1 {
+    font-size: 38px;
+  }
+
+  .intro-content p:not(.eyebrow):not(.intro-eyebrow) {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .cover-content {
+    padding: 40px 18px;
+  }
+
+  .album-cover {
+    width: 88vw;
+  }
+
+  .cover-content h1 {
+    font-size: 40px;
+    letter-spacing: 6px;
+  }
+
+  .cover-content h2 {
+    font-size: 34px;
+    letter-spacing: 5px;
+  }
+
+  .track-content h1 {
+    font-size: 40px;
+  }
+
+  .music-note {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .track-photo {
+    width: 100%;
+  }
+
+  .message-section p {
+    font-size: 13px;
+  }
+
+  .lyric {
+    font-size: 15px;
+  }
+}
+
+
+/* TOUCH DEVICES */
+
+@media (hover: none) and (pointer: coarse) {
+
+  button {
+    min-height: 44px;
+    padding: 13px 22px;
+  }
+
+  .track-row {
+    min-height: 72px;
+  }
+
+  .youtube-click-layer {
+    cursor: pointer;
+  }
+}
+
+
+/* PREVENT TEXT AND IMAGES FROM OVERFLOWING */
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+.track-content,
+.tracklist-content,
+.cover-content,
+.intro-content {
+  min-width: 0;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .album-particle,
+  .track-particle,
+  #cover::before,
+  #cover::after,
+  .track-page::before,
+  .track-page::after,
+  .intro-bg {
+    animation: none;
+  }
+
+  .intro-bg {
+    transform: none !important;
+    transition: none !important;
+  }
+}
